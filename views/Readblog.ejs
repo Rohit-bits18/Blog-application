@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <%- include("./Partials/head") %>
+    
+    <title>Blog Post</title>
+     <!-- Include custom styles if needed -->
+    <style>
+        .card-container {
+            margin-top: 1rem;
+            margin-bottom: 1rem;
+        }
+        .card-img-top {
+            width: 100%;
+            height: auto;
+        }
+        .card-body {
+            text-align: justify;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <%- include("./Partials/navBar") %>
+    </div>
+
+    <% if (locals.blog) { %>
+        <div class="container mt-4">
+            <div class="card card-container shadow-lg">
+                <img src="<%= blog.coverimg %>" class="card-img-top" alt="<%= blog.title %>">
+                <div class="card-body">
+                    <h5 class="card-title text-center mt-2 mb-3"><%= blog.title %></h5>
+                    <p class="card-text"><%= blog.body %></p>
+                </div>
+            </div>
+
+            <% if (locals.user) { %>
+                <div class="card card-container shadow-lg p-4">
+                    <h3>Comment Your Opinion Here:</h3>
+                    <form action="/view/<%= blog._id %>" method="post" class="d-flex flex-column gap-3">
+                        <textarea name="comment" class="form-control" rows="4" placeholder="Write your comment here..." required></textarea>
+                        <input type="hidden" value="<%= blog._id %>" name="blogId">
+                        <input type="hidden" value="<%= user[0].name %>" name="userName">
+                        <button type="submit" class="btn btn-primary mt-2">Comment</button>
+                    </form>
+                </div>
+            <% } %>
+
+            <div class="card card-container shadow-lg p-4 mt-4">
+                <h4>Comments (<%= comment.length %>):</h4>
+                <% comment.forEach((val, i) => { %>
+                    <div class="card card-container shadow-sm mb-3">
+                        <div class="card-body">
+                            <h5 class="card-title"><%= val.user %></h5>
+                            <p class="card-text"><%= val.comment %></p>
+                        </div>
+                    </div>
+                <% }); %>
+            </div>
+        </div>
+    <% } %>
+
+    <!-- Include Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

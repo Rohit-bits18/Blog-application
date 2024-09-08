@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <%- include("./Partials/head") %>
+    
+    <title>Blog List</title>
+ 
+    
+</head>
+<body>
+    <div>
+        <%- include("./Partials/navBar") %>
+    </div>
+
+    <div class="container mt-4">
+        <% if (locals.blogs) { %>
+            <div class="row">
+                <% blogs.forEach((val, i) => { %>
+                    <div class="col-md-4 col-sm-6 col-xs-12 mb-4">
+                        <div class="card">
+                            <img src="<%= val.coverimg %>" class="card-img-top" alt="Cover Image">
+                            <div class="card-body">
+                                <h5 class="card-title"><%= val.title %></h5>
+                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                <a href="/view/<%= val._id %>" class="btn btn-primary">View</a>
+                            </div>
+                        </div>
+                    </div>
+                <% }) %>
+            </div>
+        <% } %>
+    </div>
+
+    <!-- Include Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

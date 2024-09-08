@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+    <%- include('./Partials/head') %>
+   <!-- Include custom styles if needed -->
+    <style>
+        .vh-100 {
+            height: 100vh;
+        }
+        .form-container {
+            border-radius: 10px;
+            padding: 2rem;
+            background: #f8f9fa;
+        }
+        .form-outline input {
+            border-radius: 0.25rem;
+        }
+        .btn-lg {
+            font-size: 1.25rem;
+        }
+    </style>
+</head>
+<body>
+  <div>
+    <%- include('./Partials/navBar') %>
+  </div>
+
+  <section class="vh-100 d-flex align-items-center justify-content-center" style="margin-top: 30px;">
+      <div class="container py-5">
+          <div class="row d-flex align-items-center justify-content-center">
+              <!-- Image Column -->
+              <div class="col-md-6 col-lg-5 col-xl-4 d-none d-md-block">
+                  <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.svg"
+                       class="img-fluid" alt="Phone image">
+              </div>
+              <!-- Form Column -->
+              <div class="col-md-8 col-lg-6 col-xl-5">
+                  <div class="form-container shadow-lg">
+                      <h2 class="text-center mb-4">Sign Up</h2>
+                      <form method="post" action="/addUser">
+                          <!-- Name input -->
+                          <div class="form-outline mb-4">
+                              <input required autocomplete="off" name="name" type="text" id="name" class="form-control form-control-lg" />
+                              <label class="form-label" for="name">Name</label>
+                          </div>
+
+                          <!-- Email input -->
+                          <div class="form-outline mb-4">
+                              <input required autocomplete="off" name="email" type="email" id="email" class="form-control form-control-lg" />
+                              <label class="form-label" for="email">Email address</label>
+                          </div>
+              
+                          <!-- Password input -->
+                          <div class="form-outline mb-4">
+                              <input required autocomplete="off" name="password" type="password" id="password" class="form-control form-control-lg" />
+                              <label class="form-label" for="password">Password</label>
+                          </div>
+
+                          <!-- Submit button -->
+                          <button type="submit" class="btn btn-primary btn-lg btn-block">Sign Up</button>
+                      </form>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </section>
+
+  <!-- Include Bootstrap JS and dependencies -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

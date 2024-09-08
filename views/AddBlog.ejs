@@ -1,0 +1,45 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog Submission</title>
+    <!-- Include Bootstrap CSS -->
+    
+    <%- include('./Partials/head') %>
+</head>
+<body>
+    
+    <div>
+        <%- include('./Partials/navBar') %>
+    </div>
+
+    <div class="container mt-4">
+        <form action="/addblog" method="post" enctype="multipart/form-data">
+            <div class="form-group mb-4">
+                <label for="coverimg">Cover Image:</label>
+                <input required type="file" id="coverimg" class="form-control" name="coverimg">
+            </div>
+
+            <div class="form-group mb-4">
+                <label for="title">Blog Title:</label>
+                <input required type="text" id="title" class="form-control" name="title">
+            </div>
+
+            <div class="form-group mb-4">
+                <label for="body">Write Blog:</label>
+                <textarea name="body" id="body" class="form-control" rows="10" placeholder="Write your blog content here"></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-outline-primary mt-4">Submit</button>
+        </form>
+    </div>
+
+    <!-- Include Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
